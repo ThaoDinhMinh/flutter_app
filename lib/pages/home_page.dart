@@ -1,46 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_list_detail/styles/app_colors.dart';
+import 'package:flutter_list_detail/components/post_item.dart';
+import 'package:flutter_list_detail/components/tool_appbar.dart';
+import 'package:flutter_svg/svg.dart';
 
+// ignore: must_be_immutable
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  List<String> users = [];
+  HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    mockUsers();
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.background,
-          centerTitle: false,
-          title: Text('Free Time 24 hours !'),
+        appBar: ToolAppBar(
+          title: 'Free Time 24 hours !',
           actions: [
-            Icon(Icons.location_on_outlined),
+            IconButton(
+              onPressed: () {},
+              icon: SvgPicture.asset(
+                'assets/icon/Location.svg',
+                width: 17,
+                height: 24,
+              ),
+            )
           ],
         ),
-        body: ListView(
-          children: mockUsers(),
+        body: ListView.separated(
+          itemCount: users.length,
+          itemBuilder: (context, index) {
+            return PostItem(
+              user: users[index],
+            );
+          },
+          separatorBuilder: (BuildContext context, int index) {
+            return SizedBox(
+              height: 24,
+            );
+          },
         ));
   }
-}
 
-Widget _userItem() {
-  return Row(
-    children: [
-      Image.asset(
-        'assets/temp/user1.jpg',
-        width: 40,
-        height: 40,
-      ),
-      SizedBox(
-        width: 16,
-      ),
-      Text('Sarah Fernal'),
-    ],
-  );
-}
-
-List<Widget> mockUsers() {
-  List<Widget> users = [];
-  for (var i = 0; i < 300; i++) {
-    users.add(_userItem());
+  mockUsers() {
+    for (var i = 0; i < 300; i++) {
+      users.add('User number $i');
+    }
   }
-  return users;
 }
