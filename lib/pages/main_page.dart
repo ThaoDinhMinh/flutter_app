@@ -75,7 +75,7 @@ class MyBottomNavigation extends StatelessWidget {
                   Expanded(
                     child: BottomItemNavigation(
                         onPressed: () => onTap(Menus.home),
-                        icon: 'assets/icon/Chat.svg',
+                        icon: 'assets/icon/Home.svg',
                         current: currenIndex,
                         name: Menus.home),
                   ),

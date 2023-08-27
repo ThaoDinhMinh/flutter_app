@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_list_detail/components/tool_appbar.dart';
+import 'package:flutter_list_detail/components/user_avatar.dart';
+import 'package:flutter_list_detail/route_app/app_route.dart';
 import 'package:flutter_list_detail/styles/app_text.dart';
 
 enum ProfileMenu { edit, logout }
@@ -17,7 +19,7 @@ class ProfilePage extends StatelessWidget {
             onSelected: (value) {
               switch (value) {
                 case ProfileMenu.edit:
-                  print('edit');
+                  Navigator.of(context).pushNamed(AppRoutes.edit);
                   break;
                 case ProfileMenu.logout:
                   print('logout');
@@ -43,11 +45,7 @@ class ProfilePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Image.asset(
-            'assets/temp/user1.jpg',
-            width: 90,
-            height: 90,
-          ),
+          UserAvatar(size: 90, avatar: 'assets/temp/user1.jpg'),
           SizedBox(
             height: 24,
           ),
