@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_list_detail/components/post_item.dart';
 import 'package:flutter_list_detail/components/tool_appbar.dart';
+import 'package:flutter_list_detail/route_app/app_route.dart';
 import 'package:flutter_svg/svg.dart';
 
 // ignore: must_be_immutable
@@ -16,7 +17,9 @@ class HomePage extends StatelessWidget {
           title: 'Free Time 24 hours !',
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(AppRoutes.nearby);
+              },
               icon: SvgPicture.asset(
                 'assets/icon/Location.svg',
                 width: 17,
